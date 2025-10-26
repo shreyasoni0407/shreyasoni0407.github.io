@@ -1330,7 +1330,7 @@ section,
   padding: 1rem;
   z-index: 1;
   color: #fff;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,.15), rgba(0,0,0,.35));
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.25), rgba(0,0,0,.55));
 }
 
 .tile-content h3 {
@@ -1353,4 +1353,10 @@ section,
 .tile:focus-visible .tile-content p {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* === White text specifically inside skill boxes === */
+.tile-content h3,
+.tile-content p {
+  color: #fff !important;
 }
