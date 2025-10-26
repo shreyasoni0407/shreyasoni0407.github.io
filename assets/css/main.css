@@ -1396,3 +1396,42 @@ section,
   overflow: hidden;
   box-shadow: 0 10px 24px rgba(0,0,0,.10);
 }
+
+/* === Fix Skills Grid Layout (3 in a row) === */
+.skills-tiles .tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* flexible but keeps 3 across */
+  gap: 2rem;                 /* spacing between tiles */
+  justify-items: center;     /* centers each tile */
+  align-items: center;
+  max-width: 1200px;         /* total grid width */
+  margin: 0 auto;            /* centers the grid on the page */
+  padding: 2rem 0;
+}
+
+/* Tile size and alignment */
+.tile {
+  width: 100%;
+  max-width: 320px;          /* fixes consistent square width */
+  aspect-ratio: 1 / 1;       /* perfect square */
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #0d1117; /* your navy background color */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tile:hover {
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Text stays white and centered */
+.tile-content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: white;
+}
