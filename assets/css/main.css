@@ -1422,3 +1422,6 @@ section,
   text-align: center; color: #fff;
 }
 .tile-content h3, .tile-content p { color: #fff !important; }
+
+.skills-tiles .tiles { display: grid !important; }
+
