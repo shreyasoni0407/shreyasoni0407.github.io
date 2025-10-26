@@ -1363,75 +1363,62 @@ section,
   color: #fff !important;
 }
 
-/* === Skills layout: 3-per-row desktop, 2 tablet, 1 mobile === */
+/* ==== SKILLS GRID (final override) ==== */
 .skills-tiles { padding: 24px 0 48px; }
 
 .skills-tiles .container {
-  max-width: 1200px;     /* controls overall row width like your screenshot */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;       /* left/right whitespace */
+  padding: 0 24px;
 }
 
+/* Force the grid even if something else overrides .tiles */
 .skills-tiles .tiles {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 across on desktop */
-  gap: 36px;                              /* space between cards */
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  justify-items: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2rem 0 0;
 }
 
-/* Tablet: 2 per row */
+/* Responsive */
 @media (max-width: 992px) {
   .skills-tiles .tiles { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* Mobile: 1 per row */
 @media (max-width: 560px) {
   .skills-tiles .tiles { grid-template-columns: 1fr; }
 }
 
-/* Make each card a rounded square and consistent */
-.tile {
-  aspect-ratio: 1 / 1;      /* perfect square */
-  border-radius: 10px;       /* rounded corners like the shot */
-  width: 100%;
-  overflow: hidden;
-  box-shadow: 0 10px 24px rgba(0,0,0,.10);
-}
-
-/* === Fix Skills Grid Layout (3 in a row) === */
-.skills-tiles .tiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* flexible but keeps 3 across */
-  gap: 2rem;                 /* spacing between tiles */
-  justify-items: center;     /* centers each tile */
-  align-items: center;
-  max-width: 1200px;         /* total grid width */
-  margin: 0 auto;            /* centers the grid on the page */
-  padding: 2rem 0;
-}
-
-/* Tile size and alignment */
+/* Cards */
 .tile {
   width: 100%;
-  max-width: 320px;          /* fixes consistent square width */
-  aspect-ratio: 1 / 1;       /* perfect square */
+  max-width: 320px;       /* controls square size */
+  aspect-ratio: 1 / 1;    /* square */
   border-radius: 12px;
   overflow: hidden;
-  background-color: #0d1117; /* your navy background color */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #0d1117;
+  box-shadow: 0 10px 25px rgba(0,0,0,.4);
+  position: relative;     /* needed for .tile-content absolute */
+  transition: transform .3s ease, box-shadow .3s ease;
 }
+.tile:hover { transform: scale(1.06); box-shadow: 0 20px 40px rgba(0,0,0,.6); }
 
-.tile:hover {
-  transform: scale(1.06);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+/* Image fits */
+.tile > img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
+  transition: transform .5s ease, filter .3s ease;
 }
+.tile:hover > img { transform: scale(1.12); filter: brightness(65%); }
 
-/* Text stays white and centered */
+/* Text in white */
 .tile-content {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: white;
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  text-align: center; color: #fff;
 }
+.tile-content h3, .tile-content p { color: #fff !important; }
