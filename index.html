@@ -121,7 +121,7 @@
     <div class="hero-content">
       <h1>Shreya Soni</h1>
       <p>Business Analyst • Data & Automation Enthusiast</p>
-      <a href="index.html" class="btn">View My Work</a>
+       <a href="portfolio.html" class="btn" id="viewWorkBtn">View My Work</a>
     </div>
   </section>
 
@@ -155,8 +155,16 @@
       retina_detect: true
     });
 
-    <a href="portfolio.html" class="btn" id="viewWorkBtn">View My Work</a>
+   
     
   </script>
 </body>
 </html>
+
+document.getElementById('viewWorkBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  const hero = document.getElementById('hero');
+  hero.classList.add('fade-out');
+  setTimeout(() => { window.location.href = this.href; }, 1000);
+});
+
