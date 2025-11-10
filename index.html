@@ -161,10 +161,13 @@
 </body>
 </html>
 
+<script>
 document.getElementById('viewWorkBtn').addEventListener('click', function(e) {
   e.preventDefault();
   const hero = document.getElementById('hero');
   hero.classList.add('fade-out');
   setTimeout(() => { window.location.href = this.href; }, 1000);
 });
+</script>
+
 
